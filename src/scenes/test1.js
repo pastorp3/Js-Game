@@ -10,13 +10,11 @@ class preloadGame extends Phaser.Scene{
     preload(){
         this.load.image("platform", platformImg);
 
-        // player is a sprite sheet made by 24x48 pixels
         this.load.spritesheet("player", playerImg, {
             frameWidth: 24,
             frameHeight: 48
         });
 
-        // the coin is a sprite sheet made by 20x20 pixels
         this.load.spritesheet("coin", coinImg, {
             frameWidth: 20,
             frameHeight: 20
@@ -24,7 +22,7 @@ class preloadGame extends Phaser.Scene{
     }
     create(){
 
-        // setting player animation
+
         this.anims.create({
             key: "run",
             frames: this.anims.generateFrameNumbers("player", {
@@ -35,7 +33,6 @@ class preloadGame extends Phaser.Scene{
             repeat: -1
         });
 
-        // setting coin animation
         this.anims.create({
             key: "rotate",
             frames: this.anims.generateFrameNumbers("coin", {
@@ -51,72 +48,67 @@ class preloadGame extends Phaser.Scene{
     }
 }
 
-// playGame scene
+
 class playGame extends Phaser.Scene{
     constructor(){
         super("PlayGame");
     }
     create(){
 
-        // keeping track of added platforms
         this.addedPlatforms = 0;
 
-        // group with all active platforms.
+
         this.platformGroup = this.add.group({
 
-            // once a platform is removed, it's added to the pool
+
             removeCallback: function(platform){
                 platform.scene.platformPool.add(platform)
             }
         });
 
-        // platform pool
+
         this.platformPool = this.add.group({
 
-            // once a platform is removed from the pool, it's added to the active platforms group
+           
             removeCallback: function(platform){
                 platform.scene.platformGroup.add(platform)
             }
         });
 
-        // group with all active coins.
         this.coinGroup = this.add.group({
 
-            // once a coin is removed, it's added to the pool
+
             removeCallback: function(coin){
                 coin.scene.coinPool.add(coin)
             }
         });
 
-        // coin pool
         this.coinPool = this.add.group({
 
-            // once a coin is removed from the pool, it's added to the active coins group
+
             removeCallback: function(coin){
                 coin.scene.coinGroup.add(coin)
             }
         });
 
-        // number of consecutive jumps made by the player so far
         this.playerJumps = 0;
 
-        // adding a platform to the game, the arguments are platform width, x position and y position
+
         this.addPlatform(game.config.width, game.config.width / 2, game.config.height * gameOptions.platformVerticalLimit[1]);
 
-        // adding the player;
         this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.7, "player");
         this.player.setGravityY(gameOptions.playerGravity);
 
-        // setting collisions between the player and the platform group
+
         this.physics.add.collider(this.player, this.platformGroup, function(){
 
-            // play "run" animation if the player is on a platform
+
             if(!this.player.anims.isPlaying){
                 this.player.anims.play("run");
             }
         }, null, this);
 
-        // setting collisions between the player and the coin group
+
         this.physics.add.overlap(this.player, this.coinGroup, function(player, coin){
             this.tweens.add({
                 targets: coin,
@@ -132,11 +124,11 @@ class playGame extends Phaser.Scene{
             });
         }, null, this);
 
-        // checking for input
+
         this.input.on("pointerdown", this.jump, this);
     }
 
-    // the core of the script: platform are added from the pool or created on the fly
+
     addPlatform(platformWidth, posX, posY){
         this.addedPlatforms ++;
         let platform;
@@ -160,7 +152,7 @@ class playGame extends Phaser.Scene{
         }
         this.nextPlatformDistance = Phaser.Math.Between(gameOptions.spawnRange[0], gameOptions.spawnRange[1]);
 
-        // is there a coin over the platform?
+
         if(this.addedPlatforms > 1){
             if(Phaser.Math.Between(1, 100) <= gameOptions.coinPercent){
                 if(this.coinPool.getLength()){
@@ -183,7 +175,7 @@ class playGame extends Phaser.Scene{
         }
     }
 
-    // the player jumps when on the ground, or once in the air as long as there are jumps left and the first jump was on the ground
+
     jump(){
         if(this.player.body.touching.down || (this.playerJumps > 0 && this.playerJumps < gameOptions.jumps)){
             if(this.player.body.touching.down){
@@ -192,19 +184,17 @@ class playGame extends Phaser.Scene{
             this.player.setVelocityY(gameOptions.jumpForce * -1);
             this.playerJumps ++;
 
-            // stops animation
+n
             this.player.anims.stop();
         }
     }
     update(){
 
-        // game over
         if(this.player.y > game.config.height){
             this.scene.start("PlayGame");
         }
         this.player.x = gameOptions.playerStartPosition;
 
-        // recycling platforms
         let minDistance = game.config.width;
         let rightmostPlatformHeight = 0;
         this.platformGroup.getChildren().forEach(function(platform){
@@ -219,7 +209,6 @@ class playGame extends Phaser.Scene{
             }
         }, this);
 
-        // recycling coins
         this.coinGroup.getChildren().forEach(function(coin){
             if(coin.x < - coin.displayWidth / 2){
                 this.coinGroup.killAndHide(coin);
@@ -227,7 +216,6 @@ class playGame extends Phaser.Scene{
             }
         }, this);
 
-        // adding new platforms
         if(minDistance > this.nextPlatformDistance){
             let nextPlatformWidth = Phaser.Math.Between(gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1]);
             let platformRandomHeight = gameOptions.platformHeighScale * Phaser.Math.Between(gameOptions.platformHeightRange[0], gameOptions.platformHeightRange[1]);
