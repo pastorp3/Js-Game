@@ -1,60 +1,7 @@
-import platformImg from '../assets/platform.png';
-import playerImg from '../assets/player.png';
-import coinImg from '../assets/coin.png'
-import mountainImg from '../assets/mountain.png'
+import * as Phaser from 'phaser';
 import { game, gameOptions } from '../index';
+import preloadGame from './preload';
 
-class preloadGame extends Phaser.Scene{
-    constructor(){
-        super("PreloadGame");
-    }
-    preload(){
-        this.load.image("platform", platformImg);
-
-
-        this.load.spritesheet("player", playerImg, {
-            frameWidth: 24,
-            frameHeight: 48
-        });
-
-
-        this.load.spritesheet("coin", coinImg, {
-            frameWidth: 20,
-            frameHeight: 20
-        });
-
-        this.load.spritesheet("mountain", mountainImg, {
-            frameWidth: 512,
-            frameHeight: 512
-        });
-    }
-    create(){
-
-
-        this.anims.create({
-            key: "run",
-            frames: this.anims.generateFrameNumbers("player", {
-                start: 0,
-                end: 1
-            }),
-            frameRate: 8,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: "rotate",
-            frames: this.anims.generateFrameNumbers("coin", {
-                start: 0,
-                end: 5
-            }),
-            frameRate: 15,
-            yoyo: true,
-            repeat: -1
-        });
-
-        this.scene.start("PlayGame");
-    }
-}
 
 
 class playGame extends Phaser.Scene{
@@ -64,7 +11,6 @@ class playGame extends Phaser.Scene{
     create(){
 
 
-        this.mountainGroup = this.add.group();
 
 
         this.platformGroup = this.add.group({
@@ -102,7 +48,6 @@ class playGame extends Phaser.Scene{
         });
 
 
-        this.addMountains()
 
 
         this.addedPlatforms = 0;
@@ -118,7 +63,6 @@ class playGame extends Phaser.Scene{
         this.player.setGravityY(gameOptions.playerGravity);
         this.player.setDepth(2);
 
-p
         this.physics.add.collider(this.player, this.platformGroup, function(){
 
 
@@ -143,34 +87,13 @@ p
             });
         }, null, this);
 
-t
+
         this.input.on("pointerdown", this.jump, this);
     }
 
 
-    addMountains(){
-        let rightmostMountain = this.getRightmostMountain();
-        if(rightmostMountain < game.config.width * 2){
-            let mountain = this.physics.add.sprite(rightmostMountain + Phaser.Math.Between(100, 350), game.config.height + Phaser.Math.Between(0, 100), "mountain");
-            mountain.setOrigin(0.5, 1);
-            mountain.body.setVelocityX(gameOptions.mountainSpeed * -1)
-            this.mountainGroup.add(mountain);
-            if(Phaser.Math.Between(0, 1)){
-                mountain.setDepth(1);
-            }
-            mountain.setFrame(Phaser.Math.Between(0, 3))
-            this.addMountains()
-        }
-    }
 
 
-    getRightmostMountain(){
-        let rightmostMountain = -200;
-        this.mountainGroup.getChildren().forEach(function(mountain){
-            rightmostMountain = Math.max(rightmostMountain, mountain.x);
-        })
-        return rightmostMountain;
-    }
 
 
     addPlatform(platformWidth, posX, posY){
@@ -264,17 +187,6 @@ t
         }, this);
 
 
-        this.mountainGroup.getChildren().forEach(function(mountain){
-            if(mountain.x < - mountain.displayWidth){
-                let rightmostMountain = this.getRightmostMountain();
-                mountain.x = rightmostMountain + Phaser.Math.Between(100, 350);
-                mountain.y = game.config.height + Phaser.Math.Between(0, 100);
-                mountain.setFrame(Phaser.Math.Between(0, 3))
-                if(Phaser.Math.Between(0, 1)){
-                    mountain.setDepth(1);
-                }
-            }
-        }, this);
 
 
         if(minDistance > this.nextPlatformDistance){

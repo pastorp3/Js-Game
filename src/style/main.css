@@ -1,0 +1,12 @@
+.hide {
+	display: none;
+	visibility: hidden;
+}
+
+.inputclass {
+	position: absolute;
+	visibility: visible;
+	top: 0;
+	left: 0;
+
+}

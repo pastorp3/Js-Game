@@ -1,6 +1,8 @@
 import * as Phaser from 'phaser';
-import { playGame, resize, preloadGame } from './scenes/test1';
-import Playing from './scenes/test2';
+import { playGame, resize } from './scenes/mainscene';
+import preloadGame from './scenes/preload';
+import Title from './scenes/menu';
+import './style/main.css';
 
 let game;
 
@@ -27,8 +29,8 @@ window.onload = function() {
         type: Phaser.AUTO,
         width: 1334,
         height: 750,
-        scene: [preloadGame, playGame],
-        backgroundColor: 0x0c88c7,
+        scene: [preloadGame, Title, playGame],
+        backgroundColor: 0xd2f5b8,
 
 
         physics: {
