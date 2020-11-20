@@ -1,14 +1,15 @@
 /* eslint-disable  import/no-cycle  */
 
+import * as Phaser from 'phaser';
 import {
   gameOptions,
 } from '../index';
-import * as Phaser from 'phaser';
 
 export default class titleScene extends Phaser.Scene {
   constructor() {
     super('Title');
   }
+  
   create() {
     const userName = document.getElementsByTagName('input')[0];
     userName.classList.toggle('hide');
