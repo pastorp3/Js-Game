@@ -1,4 +1,4 @@
-/* eslint-disable  import/no-cycle, prefer-template */
+/* eslint-disable  import/no-cycle, prefer-template,  object-shorthand */
 
 import {
   gameOptions,
@@ -23,7 +23,7 @@ async function addscore() {
   const score = gameOptions.points;
   const player = gameOptions.userName;
   const saveData = {
-    user : player,
+    user: player,
     score: score,
   };
   const fetchOptions = {

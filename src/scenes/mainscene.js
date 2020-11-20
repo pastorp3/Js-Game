@@ -1,12 +1,12 @@
-/* eslint-disable  import/no-cycle, func-names,  object-shorthand, max-len, no-unused-vars, prefer-const  */
+/* eslint-disable  import/no-cycle, func-names,  object-shorthand, max-len, no-unused-vars, prefer-const, prefer-template  */
 
-import * as Phaser from 'phaser'; 
+import * as Phaser from 'phaser';
 import {
   game,
   gameOptions,
 } from '../index';
-
 import preloadGame from './preload';
+
 class playGame extends Phaser.Scene {
   constructor() {
     super('PlayGame');
@@ -53,7 +53,7 @@ class playGame extends Phaser.Scene {
         duration: 800,
         ease: 'Cubic.easeOut',
         callbackScope: this,
-        onComplete: function() {
+        onComplete: function () {
           this.coinGroup.killAndHide(coin);
           this.coinGroup.remove(coin);
         },
@@ -119,13 +119,13 @@ class playGame extends Phaser.Scene {
 
   update() {
     if (this.player.y > game.config.height) {
-      this.scene.stop("PlayGame");
-      this.scene.start("Gameover");
+      this.scene.stop('PlayGame');
+      this.scene.start('Gameover');
     }
     this.player.x = gameOptions.playerStartPosition;
     let minDistance = game.config.width;
     let rightmostPlatformHeight = 0;
-    this.platformGroup.getChildren().forEach(function(platform) {
+    this.platformGroup.getChildren().forEach(function (platform) {
       let platformDistance = game.config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
@@ -137,7 +137,7 @@ class playGame extends Phaser.Scene {
         gameOptions.points += 10;
       }
     }, this);
-    this.coinGroup.getChildren().forEach(function(coin) {
+    this.coinGroup.getChildren().forEach(function (coin) {
       if (coin.x < -coin.displayWidth / 2) {
         this.coinGroup.killAndHide(coin);
         this.coinGroup.remove(coin);
@@ -154,24 +154,24 @@ class playGame extends Phaser.Scene {
       this.addPlatform(nextPlatformWidth, game.config.width + nextPlatformWidth / 2, nextPlatformHeight);
     }
   }
-};
+}
 
 function resize() {
-  let canvas = document.querySelector("canvas");
+  let canvas = document.querySelector('canvas');
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
   let windowRatio = windowWidth / windowHeight;
   let gameRatio = game.config.width / game.config.height;
   if (windowRatio < gameRatio) {
-    canvas.style.width = windowWidth + "px";
-    canvas.style.height = (windowWidth / gameRatio) + "px";
+    canvas.style.width = windowWidth + 'px';
+    canvas.style.height = (windowWidth / gameRatio) + 'px';
   } else {
-    canvas.style.width = (windowHeight * gameRatio) + "px";
-    canvas.style.height = windowHeight + "px";
+    canvas.style.width = (windowHeight * gameRatio) + 'px';
+    canvas.style.height = windowHeight + 'px';
   }
 }
 export {
   playGame,
   resize,
-  preloadGame
+  preloadGame,
 };
