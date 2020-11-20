@@ -1,13 +1,16 @@
+/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names */
+
 import * as Phaser from 'phaser';
 import {
   playGame,
-  resize
+  resize,
 } from './scenes/mainscene';
 import preloadGame from './scenes/preload';
 import Title from './scenes/menu';
 import gameOver from './scenes/gameover';
 import leadBoard from './scenes/leadboard';
 import './style/main.css';
+
 let game;
 let gameOptions = {
   platformSpeedRange: [300, 300],
@@ -25,25 +28,26 @@ let gameOptions = {
   userName: '',
   points: 0,
   widthWindow: 1334,
-  heightWindow: 750
-}
-window.onload = function() {
-  let gameConfig = {
+  heightWindow: 750,
+};
+
+window.onload = function () {
+  const gameConfig = {
     type: Phaser.AUTO,
     width: 1334,
     height: 750,
     scene: [preloadGame, Title, playGame, gameOver, leadBoard],
     backgroundColor: 0xd2f5b8,
     physics: {
-      default: "arcade"
-    }
-  }
+      default: 'arcade',
+    },
+  };
   game = new Phaser.Game(gameConfig);
   window.focus();
   resize();
-  window.addEventListener("resize", resize, false);
-}
+  window.addEventListener('resize', resize, false);
+};
 export {
   game,
-  gameOptions
+  gameOptions,
 };
