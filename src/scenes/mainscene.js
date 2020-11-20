@@ -9,7 +9,7 @@ class playGame extends Phaser.Scene{
         super("PlayGame");
     }
     create(){
-
+    	console.log(gameOptions.userName)
 
 
 
@@ -45,9 +45,9 @@ class playGame extends Phaser.Scene{
             removeCallback: function(coin){
                 coin.scene.coinGroup.add(coin)
             }
+
+            
         });
-
-
 
 
         this.addedPlatforms = 0;
@@ -73,6 +73,7 @@ class playGame extends Phaser.Scene{
 
 
         this.physics.add.overlap(this.player, this.coinGroup, function(player, coin){
+        	
             this.tweens.add({
                 targets: coin,
                 y: coin.y - 100,
@@ -161,7 +162,9 @@ class playGame extends Phaser.Scene{
 
 
         if(this.player.y > game.config.height){
-            this.scene.start("PlayGame");
+        	console.log(gameOptions.points);
+            this.scene.stop("PlayGame");
+            this.scene.start("Gameover");
         }
         this.player.x = gameOptions.playerStartPosition;
 
@@ -176,6 +179,7 @@ class playGame extends Phaser.Scene{
             if(platform.x < - platform.displayWidth / 2){
                 this.platformGroup.killAndHide(platform);
                 this.platformGroup.remove(platform);
+                gameOptions.points += 10;
             }
         }, this);
 
@@ -183,6 +187,7 @@ class playGame extends Phaser.Scene{
             if(coin.x < - coin.displayWidth / 2){
                 this.coinGroup.killAndHide(coin);
                 this.coinGroup.remove(coin);
+                gameOptions.points += 30;
             }
         }, this);
 

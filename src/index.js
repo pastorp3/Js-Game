@@ -2,6 +2,8 @@ import * as Phaser from 'phaser';
 import { playGame, resize } from './scenes/mainscene';
 import preloadGame from './scenes/preload';
 import Title from './scenes/menu';
+import gameOver from './scenes/gameover';
+import leadBoard from './scenes/leadboard';
 import './style/main.css';
 
 let game;
@@ -19,7 +21,11 @@ let gameOptions = {
     jumpForce: 400,
     playerStartPosition: 200,
     jumps: 2,
-    coinPercent: 25
+    coinPercent: 25,
+    userName: '',
+    points: 0,
+    widthWindow: 1334,
+    heightWindow: 750
 }
 
 window.onload = function() {
@@ -29,7 +35,7 @@ window.onload = function() {
         type: Phaser.AUTO,
         width: 1334,
         height: 750,
-        scene: [preloadGame, Title, playGame],
+        scene: [preloadGame, Title, playGame, gameOver, leadBoard ],
         backgroundColor: 0xd2f5b8,
 
 

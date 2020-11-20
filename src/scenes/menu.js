@@ -1,3 +1,5 @@
+import { game, gameOptions } from '../index';
+
 export default class titleScene extends Phaser.Scene {
 	constructor() {
 		super('Title');
@@ -9,7 +11,7 @@ export default class titleScene extends Phaser.Scene {
 		let widthWindow =  1334;
 		let heightWindow = 750;
 		
-		const playbttn = this.add.image((widthWindow / 4)* 3 + 50, (heightWindow / 4)*3, "playbttn");
+		const playbttn = this.add.image((widthWindow / 4) * 3, (heightWindow / 4) * 3 - 80, "playbttn");
 		playbttn.setScale(1);
 		playbttn.setInteractive();
 
@@ -19,12 +21,12 @@ export default class titleScene extends Phaser.Scene {
 	}
 
 	play() {
-		const userName = document.getElementsByTagName('input')[0];
-		if(userName.value === '') userName.value = 'PlayerUknown';
+		const userInput = document.getElementsByTagName('input')[0];
+		if(userInput.value === '') userInput.value = 'PlayerUknown';
 
-		userName.classList.toggle('hide');
-		this.sys.game.globals.username = userInput.value;
-		userName.value = '';
+		userInput.classList.toggle('hide');
+		gameOptions.userName = userInput.value;
+		userInput.value = '';
 		this.scene.start("PlayGame");
 	}
 }

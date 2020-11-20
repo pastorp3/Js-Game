@@ -1,7 +1,10 @@
 import platformImg from '../assets/brks_2.png';
-import playerImg from '../assets/player.png';
+import playerImg from '../assets/character.png';
 import coinImg from '../assets/coin.png'
 import playBttn from '../assets/playbttn.png';
+import restartBttn from '../assets/restartbttn.png';
+import homeBttn from '../assets/home.png';
+import boardBttn from '../assets/board.png';
 import * as Phaser from 'phaser';
 
 class preloadGame extends Phaser.Scene{
@@ -11,11 +14,13 @@ class preloadGame extends Phaser.Scene{
     preload(){
         this.load.image("platform", platformImg);
         this.load.image("playbttn", playBttn);
-
+        this.load.image("restartbttn", restartBttn);
+        this.load.image("homebttn", homeBttn);
+        this.load.image("boardbttn", boardBttn);
 
         this.load.spritesheet("player", playerImg, {
-            frameWidth: 24,
-            frameHeight: 48
+            frameWidth: 40,
+            frameHeight: 64
         });
 
 
