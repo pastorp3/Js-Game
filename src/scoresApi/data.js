@@ -1,18 +1,21 @@
+/* eslint-disable  import/no-cycle, prefer-template */
+
 import {
-  gameOptions
+  gameOptions,
 } from '../index';
+
 const gameId = '8db8F866T3rQmZ3YQBea';
-let apiScores = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/' + gameId + '/scores';
+const apiScores = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/' + gameId + '/scores';
 async function getScores() {
   const fetchOptions = {
     headers: {
-      "Content-Type": "application/json; charset=UTF-8"
+      'Content-Type': 'application/json; charset=UTF-8',
     },
-    method: "GET",
+    method: 'GET',
   };
   const data = await fetch(apiScores, fetchOptions);
   const {
-    result: scores
+    result: scores,
   } = await data.json();
   return scores;
 }
@@ -20,15 +23,15 @@ async function addscore() {
   const score = gameOptions.points;
   const player = gameOptions.userName;
   const saveData = {
-    "user": player,
-    "score": score,
+    'user': player,
+    'score': score,
   };
   const fetchOptions = {
     headers: {
-      "Content-Type": "application/json; charset=UTF-8"
+      'Content-Type': 'application/json; charset=UTF-8',
     },
     body: JSON.stringify(saveData),
-    method: "POST",
+    method: 'POST',
   };
   const data = await fetch(apiScores, fetchOptions);
   const request = await data.json();
@@ -36,5 +39,5 @@ async function addscore() {
 }
 export {
   getScores,
-  addscore
+  addscore,
 };

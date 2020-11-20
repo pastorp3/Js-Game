@@ -5,7 +5,7 @@ import coinImg from '../assets/coin.png';
 import playBttn from '../assets/playbttn.png';
 import restartBttn from '../assets/restartbttn.png';
 import homeBttn from '../assets/home.png';
-import boardBttn from '../assets/board.png';ç
+import boardBttn from '../assets/board.png';
 
 class preloadGame extends Phaser.Scene {
   constructor() {
