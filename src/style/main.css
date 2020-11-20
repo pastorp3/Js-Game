@@ -1,0 +1,14 @@
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.inputclass {
+  position: absolute;
+  visibility: visible;
+  top: 8%;
+  left: 48%;
+  width: 400px;
+  height: 60px;
+  font-size: 30px;
+}
