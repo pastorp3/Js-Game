@@ -1,64 +1,69 @@
-import * as Phaser from 'phaser';
+/* eslint-disable  import/no-cycle, func-names,  object-shorthand, max-len, no-unused-vars, prefer-const  */
+
+import * as Phaser from 'phaser'; 
 import {
   game,
-  gameOptions
+  gameOptions,
 } from '../index';
+
 import preloadGame from './preload';
 class playGame extends Phaser.Scene {
   constructor() {
-    super("PlayGame");
+    super('PlayGame');
   }
+
   create() {
-    console.log(gameOptions.userName)
+    //console.log(gameOptions.userName);
     this.platformGroup = this.add.group({
-      removeCallback: function(platform) {
-        platform.scene.platformPool.add(platform)
-      }
+      removeCallback: function (platform) {
+        platform.scene.platformPool.add(platform);
+      },
     });
     this.platformPool = this.add.group({
-      removeCallback: function(platform) {
-        platform.scene.platformGroup.add(platform)
-      }
+      removeCallback: function (platform) {
+        platform.scene.platformGroup.add(platform);
+      },
     });
     this.coinGroup = this.add.group({
-      removeCallback: function(coin) {
-        coin.scene.coinPool.add(coin)
-      }
+      removeCallback: function (coin) {
+        coin.scene.coinPool.add(coin);
+      },
     });
     this.coinPool = this.add.group({
-      removeCallback: function(coin) {
-        coin.scene.coinGroup.add(coin)
-      }
+      removeCallback: function (coin) {
+        coin.scene.coinGroup.add(coin);
+      },
     });
     this.addedPlatforms = 0;
     this.playerJumps = 0;
     this.addPlatform(game.config.width, game.config.width / 2, game.config.height * gameOptions.platformVerticalLimit[1]);
-    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.7, "player");
+    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.7, 'player');
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
-    this.physics.add.collider(this.player, this.platformGroup, function() {
+    this.physics.add.collider(this.player, this.platformGroup, function () {
       if (!this.player.anims.isPlaying) {
-        this.player.anims.play("run");
+        this.player.anims.play('run');
       }
     }, null, this);
-    this.physics.add.overlap(this.player, this.coinGroup, function(player, coin) {
+    this.physics.add.overlap(this.player, this.coinGroup, function (player, coin) {
       this.tweens.add({
         targets: coin,
         y: coin.y - 100,
         alpha: 0,
         duration: 800,
-        ease: "Cubic.easeOut",
+        ease: 'Cubic.easeOut',
         callbackScope: this,
         onComplete: function() {
           this.coinGroup.killAndHide(coin);
           this.coinGroup.remove(coin);
-        }
+        },
       });
     }, null, this);
-    this.input.on("pointerdown", this.jump, this);
+    this.input.on('pointerdown', this.jump, this);
   }
+
   addPlatform(platformWidth, posX, posY) {
-    this.addedPlatforms++;
+    this.addedPlatforms += 1;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
@@ -67,11 +72,11 @@ class playGame extends Phaser.Scene {
       platform.active = true;
       platform.visible = true;
       this.platformPool.remove(platform);
-      let newRatio = platformWidth / platform.displayWidth;
+      const newRatio = platformWidth / platform.displayWidth;
       platform.displayWidth = platformWidth;
       platform.tileScaleX = 1 / platform.scaleX;
     } else {
-      platform = this.add.tileSprite(posX, posY, platformWidth, 32, "platform");
+      platform = this.add.tileSprite(posX, posY, platformWidth, 32, 'platform');
       this.physics.add.existing(platform);
       platform.body.setImmovable(true);
       platform.body.setVelocityX(Phaser.Math.Between(gameOptions.platformSpeedRange[0], gameOptions.platformSpeedRange[1]) * -1);
@@ -90,29 +95,30 @@ class playGame extends Phaser.Scene {
           coin.visible = true;
           this.coinPool.remove(coin);
         } else {
-          let coin = this.physics.add.sprite(posX, posY - 96, "coin");
+          let coin = this.physics.add.sprite(posX, posY - 96, 'coin');
           coin.setImmovable(true);
           coin.setVelocityX(platform.body.velocity.x);
-          coin.anims.play("rotate");
+          coin.anims.play('rotate');
           coin.setDepth(2);
           this.coinGroup.add(coin);
         }
       }
     }
   }
+
   jump() {
     if (this.player.body.touching.down || (this.playerJumps > 0 && this.playerJumps < gameOptions.jumps)) {
       if (this.player.body.touching.down) {
         this.playerJumps = 0;
       }
       this.player.setVelocityY(gameOptions.jumpForce * -1);
-      this.playerJumps++;
+      this.playerJumps += 1;
       this.player.anims.stop();
     }
   }
+
   update() {
     if (this.player.y > game.config.height) {
-      console.log(gameOptions.points);
       this.scene.stop("PlayGame");
       this.scene.start("Gameover");
     }

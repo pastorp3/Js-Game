@@ -23,8 +23,8 @@ async function addscore() {
   const score = gameOptions.points;
   const player = gameOptions.userName;
   const saveData = {
-    'user': player,
-    'score': score,
+    user : player,
+    score: score,
   };
   const fetchOptions = {
     headers: {
