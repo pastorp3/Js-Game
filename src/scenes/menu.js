@@ -9,7 +9,7 @@ export default class titleScene extends Phaser.Scene {
   constructor() {
     super('Title');
   }
-  
+
   create() {
     const userName = document.getElementsByTagName('input')[0];
     userName.classList.toggle('hide');

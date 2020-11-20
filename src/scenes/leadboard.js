@@ -49,6 +49,7 @@ class leadBorad extends Phaser.Scene {
     }
     return top5;
   }
+
   restart() {
     gameOptions.points = 0;
     this.scene.start('PlayGame');
