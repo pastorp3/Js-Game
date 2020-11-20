@@ -2,10 +2,10 @@
 
 import * as Phaser from 'phaser';
 import {
-  addscore
+  addscore,
 } from '../scoresApi/data';
 import {
-  gameOptions
+  gameOptions,
 } from '../index';
 
 class gameOver extends Phaser.Scene {
