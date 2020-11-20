@@ -13,7 +13,6 @@ class playGame extends Phaser.Scene {
   }
 
   create() {
-    //console.log(gameOptions.userName);
     this.platformGroup = this.add.group({
       removeCallback: function (platform) {
         platform.scene.platformPool.add(platform);
