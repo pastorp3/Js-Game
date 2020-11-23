@@ -37,7 +37,7 @@ window.onload = function () {
     width: 1334,
     height: 750,
     scene: [preloadGame, Title, playGame, gameOver, leadBoard],
-    backgroundColor: 0xd2f5b8,
+    backgroundColor: 0xffffff,
     physics: {
       default: 'arcade',
     },

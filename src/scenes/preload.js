@@ -7,6 +7,7 @@ import homeBttn from '../assets/home.png';
 import boardBttn from '../assets/board.png';
 import ninjaAnim from '../animations/ninja_run.png';
 import ninjaJson from '../animations/ninja_run.json';
+import logo from '../assets/logo.png';
 
 class preloadGame extends Phaser.Scene {
   constructor() {
@@ -19,6 +20,7 @@ class preloadGame extends Phaser.Scene {
     this.load.image('restartbttn', restartBttn);
     this.load.image('homebttn', homeBttn);
     this.load.image('boardbttn', boardBttn);
+    this.load.image('ninjalogo', logo);
     this.load.spritesheet('coin', coinImg, {
       frameWidth: 20,
       frameHeight: 20,
