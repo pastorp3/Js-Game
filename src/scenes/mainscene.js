@@ -37,7 +37,7 @@ class playGame extends Phaser.Scene {
     this.playerJumps = 0;
     this.addPlatform(game.config.width, game.config.width / 2, game.config.height * gameOptions.platformVerticalLimit[1]);
     this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.7, 'ninja');
-    this.player.setScale(.15);
+    this.player.setScale(0.15);
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
     this.physics.add.collider(this.player, this.platformGroup, function () {

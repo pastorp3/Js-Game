@@ -18,7 +18,7 @@ class leadBorad extends Phaser.Scene {
     for (let i = 0; i < top.length; i += 1) {
       const user = top[i].user;
       const score = top[i].score;
-      this.add.text((gameOptions.widthWindow / 4) * .5, ((100/5) * (i + 1)) + 80 * (i +1) , `${i + 1}.- ${user} Score: ${score}`, {
+      this.add.text((gameOptions.widthWindow / 4) * 0.5, ((100 / 5) * (i + 1)) + 80 * (i + 1), `${i + 1}.- ${user} Score: ${score}`, {
         color: '#7801F8',
         fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
         fontSize: '40px',
