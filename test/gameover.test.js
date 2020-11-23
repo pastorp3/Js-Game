@@ -1,3 +1,5 @@
+/* eslint-disable  new-cap */
+
 import * as Phaser from 'phaser';
 import gameOver from '../src/scenes/gameover';
 import { gameConfig } from '../src/index';

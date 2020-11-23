@@ -1,7 +1,7 @@
-import { 
+import {
   getScores,
   addscore,
-  } from '../src/scoresApi/data';
+} from '../src/scoresApi/data';
 
 test('1. Test the get data from API', () => {
   expect(getScores()).toBeDefined();

@@ -1,5 +1,7 @@
+/* eslint-disable  new-cap */
+
 import * as Phaser from 'phaser';
-import  leadBorad from '../src/scenes/leadboard';
+import leadBorad from '../src/scenes/leadboard';
 import { gameConfig } from '../src/index';
 
 const game = new Phaser.Game(gameConfig);

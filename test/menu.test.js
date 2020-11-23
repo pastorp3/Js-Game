@@ -1,3 +1,5 @@
+/* eslint-disable  new-cap, no-unused-vars */
+
 import * as Phaser from 'phaser';
 import titleScene from '../src/scenes/menu';
 import { gameConfig } from '../src/index';

@@ -1,3 +1,5 @@
+/* eslint-disable  new-cap */
+
 import * as Phaser from 'phaser';
 import preloadGame from '../src/scenes/preload';
 import { gameConfig } from '../src/index';

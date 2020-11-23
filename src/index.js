@@ -1,4 +1,4 @@
-/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names */
+/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names, padded-blocks */
 
 import * as Phaser from 'phaser';
 import {
@@ -43,7 +43,6 @@ const gameConfig = {
 };
 
 window.onload = function () {
-
   game = new Phaser.Game(gameConfig);
   window.focus();
   resize();
