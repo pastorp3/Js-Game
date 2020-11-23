@@ -1,4 +1,4 @@
-/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names */
+/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names, padded-blocks, max-len */
 
 import * as Phaser from 'phaser';
 import {
@@ -31,17 +31,18 @@ let gameOptions = {
   heightWindow: 750,
 };
 
+const gameConfig = {
+  type: Phaser.AUTO,
+  width: 1334,
+  height: 750,
+  scene: [preloadGame, Title, playGame, gameOver, leadBoard],
+  backgroundColor: 0xffffff,
+  physics: {
+    default: 'arcade',
+  },
+};
+
 window.onload = function () {
-  const gameConfig = {
-    type: Phaser.AUTO,
-    width: 1334,
-    height: 750,
-    scene: [preloadGame, Title, playGame, gameOver, leadBoard],
-    backgroundColor: 0xffffff,
-    physics: {
-      default: 'arcade',
-    },
-  };
   game = new Phaser.Game(gameConfig);
   window.focus();
   resize();
@@ -50,4 +51,5 @@ window.onload = function () {
 export {
   game,
   gameOptions,
+  gameConfig,
 };
