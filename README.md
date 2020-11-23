@@ -33,6 +33,8 @@ Then you will go into the game itself, where the ninja will start running on a l
 
 To make it a little more fair to ninja the game has the double jump functionality, so he can get to those further platforms that randomly show up. The double jump can be activated when ninja is already in the air by hitting the jump action button again.
 
+![screenshot](./src/screenshots/coin.png)
+
 Through the game, you will find these coins. If you collect on of those you will get an extra 30 points.
 
 After ninja falls into the abyss, you are taken to the game over scene, where you can see your score and some buttons.
