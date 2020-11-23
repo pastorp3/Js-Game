@@ -1,4 +1,4 @@
-/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names, padded-blocks */
+/* eslint-disable  import/no-cycle, import/no-mutable-exports, prefer-const,  func-names, padded-blocks, max-len */
 
 import * as Phaser from 'phaser';
 import {
