@@ -31,21 +31,21 @@ class preloadGame extends Phaser.Scene {
 
   create() {
     this.anims.create({
-        key: 'run',
-        frames: [
-            { key: 'ninja',frame:'Run__000.png'},
-            { key: 'ninja',frame:'Run__001.png'},
-            { key: 'ninja',frame:'Run__002.png'},
-            { key: 'ninja',frame:'Run__003.png'},
-            { key: 'ninja',frame:'Run__004.png'},
-            { key: 'ninja',frame:'Run__005.png'},
-            { key: 'ninja',frame:'Run__006.png'},
-            { key: 'ninja',frame:'Run__007.png'},
-            { key: 'ninja',frame:'Run__008.png'},
-            { key: 'ninja',frame:'Run__009.png'},
-        ],
-        frameRate: 8,
-        repeat: -1
+      key: 'run',
+      frames: [
+        { key: 'ninja', frame: 'Run__000.png'},
+        { key: 'ninja', frame: 'Run__001.png'},
+        { key: 'ninja', frame: 'Run__002.png'},
+        { key: 'ninja', frame: 'Run__003.png'},
+        { key: 'ninja', frame: 'Run__004.png'},
+        { key: 'ninja', frame: 'Run__005.png'},
+        { key: 'ninja', frame: 'Run__006.png'},
+        { key: 'ninja', frame: 'Run__007.png'},
+        { key: 'ninja', frame: 'Run__008.png'},
+        { key: 'ninja', frame: 'Run__009.png'},
+      ],
+      frameRate: 8,
+      repeat: -1,
     });
     this.anims.create({
       key: 'rotate',
