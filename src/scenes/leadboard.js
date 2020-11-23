@@ -18,16 +18,18 @@ class leadBorad extends Phaser.Scene {
     for (let i = 0; i < top.length; i += 1) {
       const user = top[i].user;
       const score = top[i].score;
-      this.add.text(100, (100 / 8) * i, `User: ${user} Score: ${score}`, {
-        fill: '#0f0',
+      this.add.text((gameOptions.widthWindow / 4) * 0.5, ((100 / 5) * (i + 1)) + 80 * (i + 1), `${i + 1}.- ${user} Score: ${score}`, {
+        color: '#7801F8',
+        fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+        fontSize: '40px',
       });
     }
-    const restartbttn = this.add.image((gameOptions.widthWindow / 4) * 3, (gameOptions.heightWindow / 4) * 3 - 80, 'restartbttn');
-    restartbttn.scale = 0.5;
+    const restartbttn = this.add.image((gameOptions.widthWindow / 4) * 3, (gameOptions.heightWindow / 4) * 1 - 80, 'restartbttn');
+    restartbttn.scale = 0.25;
     restartbttn.setInteractive();
     restartbttn.on('pointerdown', this.restart.bind(this));
-    const homebttn = this.add.image((gameOptions.widthWindow / 4) * 2, (gameOptions.heightWindow / 4) * 2 - 80, 'homebttn');
-    homebttn.scale = 0.5;
+    const homebttn = this.add.image((gameOptions.widthWindow / 4) * 3, (gameOptions.heightWindow / 4) * 2 - 80, 'homebttn');
+    homebttn.scale = 0.25;
     homebttn.setInteractive();
     homebttn.on('pointerdown', this.home.bind(this));
   }
