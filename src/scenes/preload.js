@@ -1,11 +1,12 @@
 import * as Phaser from 'phaser';
 import platformImg from '../assets/brks_2.png';
-import playerImg from '../assets/character.png';
 import coinImg from '../assets/coin.png';
 import playBttn from '../assets/playbttn.png';
 import restartBttn from '../assets/restartbttn.png';
 import homeBttn from '../assets/home.png';
 import boardBttn from '../assets/board.png';
+import ninjaAnim from '../animations/ninja_run.png';
+import ninjaJson from '../animations/ninja_run.json';
 
 class preloadGame extends Phaser.Scene {
   constructor() {
@@ -18,25 +19,31 @@ class preloadGame extends Phaser.Scene {
     this.load.image('restartbttn', restartBttn);
     this.load.image('homebttn', homeBttn);
     this.load.image('boardbttn', boardBttn);
-    this.load.spritesheet('player', playerImg, {
-      frameWidth: 40,
-      frameHeight: 64,
-    });
     this.load.spritesheet('coin', coinImg, {
       frameWidth: 20,
       frameHeight: 20,
     });
+    this.load.atlas('ninja', ninjaAnim, ninjaJson);
   }
+
 
   create() {
     this.anims.create({
-      key: 'run',
-      frames: this.anims.generateFrameNumbers('player', {
-        start: 0,
-        end: 1,
-      }),
-      frameRate: 8,
-      repeat: -1,
+        key: 'run',
+        frames: [
+            { key: 'ninja',frame:'Run__000.png'},
+            { key: 'ninja',frame:'Run__001.png'},
+            { key: 'ninja',frame:'Run__002.png'},
+            { key: 'ninja',frame:'Run__003.png'},
+            { key: 'ninja',frame:'Run__004.png'},
+            { key: 'ninja',frame:'Run__005.png'},
+            { key: 'ninja',frame:'Run__006.png'},
+            { key: 'ninja',frame:'Run__007.png'},
+            { key: 'ninja',frame:'Run__008.png'},
+            { key: 'ninja',frame:'Run__009.png'},
+        ],
+        frameRate: 8,
+        repeat: -1
     });
     this.anims.create({
       key: 'rotate',
