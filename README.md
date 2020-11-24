@@ -17,7 +17,7 @@ This game is a platformer made with the Phaser library as a Capstone Project for
 
 ## Live Demo
 
-[Ninja Run Demo](https://rawcdn.githack.com/pastorp3/Js-Game/2a99f15465096cf19a9abdc70a816c85f5e0b05f/dist/index.html)
+[Ninja Run Demo](https://fierce-eyrie-64717.herokuapp.com/)
 
 # How to play
 
@@ -74,7 +74,9 @@ This will get the project ready to run. After this compile the project just in c
 
 Make sure you have a folder called **dist** in the root of the project so it doesn't throw any errors.
 
-Next, you have to install some kind of server to run it in your browser. I recommend using the live server extension from Ritwick Dey for VSCode but something like [XAMPP](https://www.apachefriends.org/) can also be used.
+Next, you have to install some kind of server to run it in your browser. I recommend using the live server extension from Ritwick Dey for VSCode but something like [XAMPP](https://www.apachefriends.org/) can also be used or run the next script and it will open a local server with http-server dependenci:
+
+> npm start
 
 Then start the server on the **index.html** file located in the **dist** folder and that is it, you are ready to go
 
