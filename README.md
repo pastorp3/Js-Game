@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Ninja Run The Game
-Is a game where the Ninja is trying to steal the treasure from the castle but he has to escape with it but also he will collect more parts of the traesure in his journey.
+Is a game where the Ninja is trying to steal the treasure from the castle but he has to escape with it but also he will collect more parts of the treasure in his journey.
 
 ![screenshot](./src/assets/logo.png)
 
@@ -25,7 +25,7 @@ When you start the page it will show you the title screen:
 
 ![screenshot](./src/screenshots/title.png)
 
-On this screen, you will have to enter your name so the game can start. If no name is entered your score will be from a unkown player.
+On this screen, you will have to enter your name so the game can start. If no name is entered your score will be from a unknown player.
 
 Then you will go into the game itself, where the ninja will start running on a long platform. To **make ninja jump** use a **mouse click**.
 
@@ -35,7 +35,7 @@ To make it a little more fair to ninja the game has the double jump functionalit
 
 ![screenshot](./src/screenshots/coin.png)
 
-Through the game, you will find these coins. If you collect on of those you will get an extra 30 points.
+Through the game, you will find these coins. If you collect one of those you will get an extra 30 points.
 
 After ninja falls into the abyss, you are taken to the game over scene, where you can see your score and some buttons.
 
