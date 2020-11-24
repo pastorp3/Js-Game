@@ -50,6 +50,10 @@ The buttons give the options:
 
 You can check if you made it and if you are at the top of the board.
 
+## Game Design Document
+
+![documents](./docs/gameDesign.md)
+
 ## Setup
 
 To run the game locally you will need to follow several steps to make it work.
