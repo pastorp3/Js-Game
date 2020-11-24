@@ -4,6 +4,8 @@ import * as Phaser from 'phaser';
 import leadBorad from '../src/scenes/leadboard';
 import { gameConfig } from '../src/index';
 
+window.onload = jest.fn();
+
 const game = new Phaser.Game(gameConfig);
 
 test('1. Test preloader scene inheritance from phaser ', () => {

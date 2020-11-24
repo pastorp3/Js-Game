@@ -3,6 +3,9 @@ import {
   addscore,
 } from '../src/scoresApi/data';
 
+
+window.onload = jest.fn();
+
 test('1. Test the get data from API', () => {
   expect(getScores()).toBeDefined();
 });

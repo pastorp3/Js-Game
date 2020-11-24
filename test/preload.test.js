@@ -4,6 +4,9 @@ import * as Phaser from 'phaser';
 import preloadGame from '../src/scenes/preload';
 import { gameConfig } from '../src/index';
 
+
+window.onload = jest.fn();
+
 const game = new Phaser.Game(gameConfig);
 
 test('1. Test preloader scene inheritance from phaser ', () => {
